@@ -1,0 +1,70 @@
+[build-system]
+requires = ["setuptools>=68.0", "setuptools-scm>=8.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "plant-cpd"
+version = "0.1.0"
+description = "CPD-based registration and light simulation for 3D plant models (GLB)"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.12"
+
+authors = [
+    {name = "Plant CPD Team"},
+]
+
+dependencies = [
+    "numpy>=1.26",
+    "scipy>=1.12",
+    "trimesh[easy]>=4.0",
+    "pycpd>=2.0",
+    "h5py>=3.10",
+    "pyvista>=0.43",
+    "matplotlib>=3.8",
+    "click>=8.1",
+    "tqdm>=4.66",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=4.1",
+    "ruff>=0.3",
+    "mypy>=1.8",
+]
+
+# --- CLI entrypoints ---
+[project.scripts]
+plant-cpd = "plant_cpd.cli:main"
+plant-light = "plant_light_sim.cli.main:main"
+
+# --- package discovery ---
+[tool.setuptools.packages.find]
+where = ["src", "."]
+include = ["plant_cpd*", "plant_light_sim*"]
+
+# --- ruff config ---
+[tool.ruff]
+target-version = "py312"
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP"]
+ignore = [
+    "E501",
+]
+
+# --- pytest ---
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short --cov=src --cov-report=term-missing"
+
+# --- coverage (опционально) ---
+[tool.coverage.run]
+branch = true
+source = ["src", "plant_light_sim", "plant_cpd"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
