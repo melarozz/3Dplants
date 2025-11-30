@@ -4,14 +4,27 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "plant-cpd"
-version = "0.1.0"
-description = "CPD-based registration and light simulation for 3D plant models (GLB)"
+version = "0.4.1"
+description = "3D plant phenotyping: segmentation, CPD registration, growth tracking, lighting, morphometrics"
 readme = "README.md"
 license = {text = "MIT"}
-requires-python = ">=3.12"
+requires-python = ">=3.10"
 
 authors = [
-    {name = "Plant CPD Team"},
+    {name = "Iakovleva V.V."},
+]
+
+keywords = ["3d", "phenotyping", "plants", "cpd", "point-cloud", "morphometrics"]
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Image Recognition",
 ]
 
 dependencies = [
@@ -33,37 +46,37 @@ dev = [
     "ruff>=0.3",
     "mypy>=1.8",
 ]
+generation = [
+    "rembg>=2.0",
+    "onnxruntime>=1.16",
+    "Pillow>=10.0",
+]
 
-# --- CLI entrypoints ---
 [project.scripts]
-plant-cpd = "plant_cpd.cli:main"
-plant-light = "plant_light_sim.cli.main:main"
+plant-cpd = "plant_3d.infrastructure.cpd.cli:main"
+plant-light = "plant_3d.infrastructure.light.cli.main:main"
+plant-segment = "plant_3d.infrastructure.segmentation.cli.segment:main"
+plant3d = "plant_3d.cli:main"
 
-# --- package discovery ---
 [tool.setuptools.packages.find]
-where = ["src", "."]
-include = ["plant_cpd*", "plant_light_sim*"]
+where = ["src"]
+include = ["plant_3d*"]
 
-# --- ruff config ---
 [tool.ruff]
 target-version = "py312"
 line-length = 88
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "N", "W", "UP"]
-ignore = [
-    "E501",
-]
+ignore = ["E501"]
 
-# --- pytest ---
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-v --tb=short --cov=src --cov-report=term-missing"
 
-# --- coverage (опционально) ---
 [tool.coverage.run]
 branch = true
-source = ["src", "plant_light_sim", "plant_cpd"]
+source = ["src"]
 
 [tool.coverage.report]
 show_missing = true
