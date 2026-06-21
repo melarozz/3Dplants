@@ -1,7 +1,7 @@
 import numpy as np
 
-from plant_light_sim.core.bvh import build_bvh, traverse_bvh
-from plant_light_sim.core.ray import Ray
+from plant_3d.infrastructure.light.core.bvh import build_bvh, traverse_bvh
+from plant_3d.infrastructure.light.core.ray import Ray
 
 
 def test_bvh_basic():

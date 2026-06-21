@@ -1,5 +1,5 @@
 import numpy as np
-from plant_light_sim.core.intersection import ray_triangle_intersect
+from plant_3d.infrastructure.light.core.intersection import ray_triangle_intersect
 
 
 def test_intersection_hit():

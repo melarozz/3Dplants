@@ -3,8 +3,8 @@
 import numpy as np
 import pytest
 
-from plant_cpd.config import PreprocessConfig
-from plant_cpd.preprocessing import (
+from plant_3d.infrastructure.cpd.config import PreprocessConfig
+from plant_3d.infrastructure.cpd.preprocessing import (
     center,
     normalize_scale,
     preprocess,

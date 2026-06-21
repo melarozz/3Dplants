@@ -3,10 +3,10 @@
 import numpy as np
 import pytest
 
-from plant_cpd.config import NonrigidCPDConfig, RigidCPDConfig
-from plant_cpd.cpd_nonrigid import nonrigid_cpd
-from plant_cpd.cpd_rigid import rigid_cpd
-from plant_cpd.metrics import rmse
+from plant_3d.infrastructure.cpd.config import NonrigidCPDConfig, RigidCPDConfig
+from plant_3d.infrastructure.cpd.cpd_nonrigid import nonrigid_cpd
+from plant_3d.infrastructure.cpd.cpd_rigid import rigid_cpd
+from plant_3d.infrastructure.cpd.metrics import rmse
 
 
 class TestRigidCPD:

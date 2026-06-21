@@ -3,7 +3,7 @@
 import numpy as np
 import pytest
 
-from plant_cpd.metrics import (
+from plant_3d.infrastructure.cpd.metrics import (
     chamfer_distance,
     compute_all_metrics,
     hausdorff_distance,

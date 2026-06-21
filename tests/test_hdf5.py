@@ -3,7 +3,7 @@
 import numpy as np
 import pytest
 
-from plant_cpd.hdf5_store import HDF5Store
+from plant_3d.infrastructure.cpd.hdf5_store import HDF5Store
 
 
 class TestHDF5Store:

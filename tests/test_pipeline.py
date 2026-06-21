@@ -9,8 +9,8 @@ import numpy as np
 import pytest
 import trimesh
 
-from plant_cpd.config import PipelineConfig, PreprocessConfig
-from plant_cpd.pipeline import register
+from plant_3d.infrastructure.cpd.config import PipelineConfig, PreprocessConfig
+from plant_3d.infrastructure.cpd.pipeline import register
 
 
 def _create_test_glb(
